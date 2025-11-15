@@ -46,6 +46,7 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+          hover: "hsl(var(--card-hover))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -56,6 +57,13 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        spotify: {
+          green: "hsl(var(--spotify-green))",
+          dark: "hsl(var(--spotify-dark))",
+          darker: "hsl(var(--spotify-darker))",
+          gray: "hsl(var(--spotify-gray))",
+          "light-gray": "hsl(var(--spotify-light-gray))",
         },
       },
       borderRadius: {
