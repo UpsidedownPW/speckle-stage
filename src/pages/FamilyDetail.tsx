@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Heart, ThumbsUp, ThumbsDown, Play, MoreVertical } from "lucide-react";
+import { UserPlus, ThumbsUp, ThumbsDown, Play, MoreVertical } from "lucide-react";
 import { useState } from "react";
 
 const mockFamilyTypes = [
@@ -58,7 +58,7 @@ export default function FamilyDetail() {
           className="rounded-full w-12 h-12"
           onClick={() => setIsLiked(!isLiked)}
         >
-          <Heart
+          <UserPlus
             className={`w-6 h-6 ${isLiked ? "fill-primary text-primary" : ""}`}
           />
         </Button>
