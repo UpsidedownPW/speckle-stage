@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { UserPlus, ThumbsUp, ThumbsDown, Play, MoreVertical } from "lucide-react";
 import { useState } from "react";
 
@@ -17,6 +18,7 @@ export default function FamilyDetail() {
   const [thumbsDown, setThumbsDown] = useState(false);
   const [likesCount] = useState(342);
   const [dislikesCount] = useState(18);
+  const [selectedType, setSelectedType] = useState<typeof mockFamilyTypes[0] | null>(null);
 
   return (
     <div className="min-h-screen ml-64">
@@ -109,6 +111,7 @@ export default function FamilyDetail() {
             <div
               key={type.id}
               className="flex items-center gap-4 p-4 rounded-md hover:bg-secondary transition-colors group cursor-pointer"
+              onClick={() => setSelectedType(type)}
             >
               <div className="text-muted-foreground w-8">{index + 1}</div>
               <div className="flex-1">
@@ -121,6 +124,10 @@ export default function FamilyDetail() {
                 size="icon"
                 variant="ghost"
                 className="opacity-0 group-hover:opacity-100 transition-opacity"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedType(type);
+                }}
               >
                 <Play className="w-4 h-4" />
               </Button>
@@ -153,6 +160,57 @@ export default function FamilyDetail() {
           </div>
         </div>
       </div>
+
+      {/* Type Detail Dialog */}
+      <Dialog open={!!selectedType} onOpenChange={(open) => !open && setSelectedType(null)}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">{selectedType?.name}</DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-6">
+            {/* 3D Preview */}
+            <div className="bg-card rounded-lg p-8 aspect-video flex items-center justify-center border border-border">
+              <div className="text-center space-y-2">
+                <div className="text-4xl">🔲</div>
+                <div className="text-muted-foreground">Speckle 3D Preview</div>
+                <div className="text-sm text-muted-foreground">Interactive 3D model will load here</div>
+              </div>
+            </div>
+
+            {/* Type Info */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">Usage Count</p>
+                <p className="text-2xl font-bold">{selectedType?.usageCount} uses</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">Family Type</p>
+                <p className="text-xl font-semibold">{selectedType?.name}</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">Category</p>
+                <p className="text-lg">Structural Columns</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">Last Used</p>
+                <p className="text-lg">2 days ago</p>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-3">
+              <Button size="lg" className="flex-1">
+                <Play className="w-5 h-5 mr-2 fill-current" />
+                Load in Revit
+              </Button>
+              <Button size="lg" variant="outline">
+                View Parameters
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
