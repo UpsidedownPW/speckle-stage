@@ -19,7 +19,7 @@ export function Sidebar() {
   const playlists = ["Structural Elements", "MEP Components", "Furniture & Fixtures", "Frequently Used", "Recent Projects"];
   return <div className="w-64 bg-sidebar flex flex-col h-screen fixed left-0 top-0">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-primary">Revity</h1>
+        <h1 className="text-2xl font-bold text-primary">Revitfy</h1>
       </div>
 
       <nav className="space-y-1 px-3">
