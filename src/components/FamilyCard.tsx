@@ -20,18 +20,8 @@ export function FamilyCard({
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   return <Card className="card-hover cursor-pointer p-4 group relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => navigate(`/family/${id}`)}>
-      {/* Preview Card Summary */}
-      <div className="aspect-square bg-secondary/50 rounded-md mb-4 relative overflow-hidden border border-border/50">
-        <div className="h-full flex flex-col items-center justify-center p-4 gap-3">
-          <div className="w-16 h-16 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-            <Play className="w-8 h-8 text-primary" />
-          </div>
-          <div className="text-center space-y-1">
-            <p className="text-sm font-medium text-foreground line-clamp-2">{name}</p>
-            <p className="text-xs text-muted-foreground">{category}</p>
-          </div>
-        </div>
-        
+      {/* Preview Card */}
+      <div className="aspect-square bg-primary/10 rounded-md mb-4 relative overflow-hidden">
         {isHovered && <Button size="icon" className="absolute bottom-2 right-2 bg-primary hover:scale-105 transition-transform shadow-lg" onClick={e => {
         e.stopPropagation();
         navigate(`/family/${id}`);
