@@ -15,6 +15,8 @@ export default function FamilyDetail() {
   const [isLiked, setIsLiked] = useState(false);
   const [thumbsUp, setThumbsUp] = useState(false);
   const [thumbsDown, setThumbsDown] = useState(false);
+  const [likesCount] = useState(342);
+  const [dislikesCount] = useState(18);
 
   return (
     <div className="min-h-screen ml-64">
@@ -39,6 +41,10 @@ export default function FamilyDetail() {
               <span className="text-muted-foreground">1,250 total uses</span>
               <span className="text-muted-foreground">•</span>
               <span className="text-muted-foreground">4 types</span>
+              <span className="text-muted-foreground">•</span>
+              <span className="text-muted-foreground">{likesCount} likes</span>
+              <span className="text-muted-foreground">•</span>
+              <span className="text-muted-foreground">{dislikesCount} dislikes</span>
               <span className="text-muted-foreground">•</span>
               <span className="text-muted-foreground">Last used 2 days ago</span>
             </div>
