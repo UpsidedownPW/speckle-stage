@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { UserPlus, ThumbsUp, ThumbsDown, Play, MoreVertical } from "lucide-react";
 import { useState } from "react";
 
@@ -161,16 +161,16 @@ export default function FamilyDetail() {
         </div>
       </div>
 
-      {/* Type Detail Dialog */}
-      <Dialog open={!!selectedType} onOpenChange={(open) => !open && setSelectedType(null)}>
-        <DialogContent className="max-w-4xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl">{selectedType?.name}</DialogTitle>
-          </DialogHeader>
+      {/* Type Detail Drawer */}
+      <Sheet open={!!selectedType} onOpenChange={(open) => !open && setSelectedType(null)}>
+        <SheetContent side="right" className="w-[600px] sm:max-w-[600px] overflow-y-auto">
+          <SheetHeader className="pb-6 border-b">
+            <SheetTitle className="text-2xl">{selectedType?.name}</SheetTitle>
+          </SheetHeader>
           
-          <div className="space-y-6">
+          <div className="space-y-6 pt-6">
             {/* 3D Preview */}
-            <div className="bg-card rounded-lg p-8 aspect-video flex items-center justify-center border border-border">
+            <div className="bg-muted/50 rounded-lg p-8 aspect-video flex items-center justify-center border">
               <div className="text-center space-y-2">
                 <div className="text-4xl">🔲</div>
                 <div className="text-muted-foreground">Speckle 3D Preview</div>
@@ -179,7 +179,7 @@ export default function FamilyDetail() {
             </div>
 
             {/* Type Info */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 p-4 bg-muted/30 rounded-lg border">
               <div className="space-y-1">
                 <p className="text-sm text-muted-foreground">Usage Count</p>
                 <p className="text-2xl font-bold">{selectedType?.usageCount} uses</p>
@@ -199,7 +199,7 @@ export default function FamilyDetail() {
             </div>
 
             {/* Actions */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 pt-2">
               <Button size="lg" className="flex-1">
                 <Play className="w-5 h-5 mr-2 fill-current" />
                 Load in Revit
@@ -209,8 +209,8 @@ export default function FamilyDetail() {
               </Button>
             </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }
