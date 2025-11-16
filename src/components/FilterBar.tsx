@@ -15,7 +15,7 @@ export function FilterBar() {
       <div className="relative flex-1 min-w-[200px]">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <Input
-          placeholder="Search families..."
+          placeholder="What Do You Want To Play?"
           className="pl-10 bg-secondary border-border"
         />
       </div>
